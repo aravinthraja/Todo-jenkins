@@ -16,6 +16,6 @@ describe("B suite", function(){
 	  });
 	  it("and has a positive case", function() {
 		  console.log(a());
-		    expect(a()).toBe(false);
+		    expect(a()).toBe(true);
 	  });
 });
