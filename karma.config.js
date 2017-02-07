@@ -24,13 +24,16 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-
+    junitReporter: {
+        outputDir: 'build/junit/', // results will be saved as $outputDir/$browserName.xml
+        outputFile: undefined // if included, results will be saved as $outputDir/$browserName/$outputFile
+      },
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ["spec","coverage"],
-    plugins: ["karma-spec-reporter","karma-jasmine","karma-phantomjs-launcher","karma-coverage"],
+    reporters: ["spec","coverage","junit"],
+    plugins: ["karma-spec-reporter","karma-jasmine","karma-phantomjs-launcher","karma-coverage","karma-junit-reporter"],
 
 
     // web server port
@@ -67,8 +70,9 @@ module.exports = function(config) {
     					'js/src/*.js': ['coverage']
     				},
     coverageReporter: {
-        dir : 'cobertura/',
-        	 reporters: [  { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+        dir : 'build/reports/coverage/',
+        	 reporters: [  { type: 'html', subdir: 'html-report' , file: 'index.xml' },
+        	               { type: 'cobertura', subdir: 'cobertura-report', file: 'cobertura.xml' },
         	               { type: 'text-summary' }
         	 	]
     }
