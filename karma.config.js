@@ -14,7 +14,7 @@ module.exports = function(config) {
 
 
     // list of files / patterns to load in the browser
-    files: ['js/src/real.js','js/test/test.js'],
+    files: ['js/src/real.js','js/test/real.js'],
 
 
     // list of files to exclude
@@ -24,15 +24,13 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-	    reporters: ["spec"],
-	    plugins: ["karma-spec-reporter","karma-jasmine","karma-phantomjs-launcher"],
+    reporters: ["spec","coverage"],
+    plugins: ["karma-spec-reporter","karma-jasmine","karma-phantomjs-launcher","karma-coverage"],
 
 
     // web server port
@@ -45,7 +43,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_ERROR,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -59,20 +57,20 @@ module.exports = function(config) {
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: false,
+    singleRun: true,
 
     // Concurrency level
     // how many browser should be started simultaneous
-    concurrency: Infinity
-//    
-//    preprocessors: 	{
-//    					'js/src/*.js': ['coverage']
-//    				},
-//    reporters: ['progress', 'coverage'],
-//    coverageReporter: {
-//        type : 'html',
-//        dir : 'coverage/',
-//        subdir: '.'
-//    }
+    concurrency: Infinity,
+    
+    preprocessors: 	{
+    					'js/src/*.js': ['coverage']
+    				},
+    coverageReporter: {
+        dir : 'cobertura/',
+        	 reporters: [  { type: 'cobertura', subdir: '.', file: 'cobertura.txt' },
+        	               { type: 'text-summary' }
+        	 	]
+    }
   })
 }

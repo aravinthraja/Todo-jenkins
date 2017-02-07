@@ -1,4 +1,5 @@
-describe("A suite", function() {
+describe("A suite", function() 
+{
   it("contains spec with an expectation", function() {
     expect(true).toBe(true);
   });
@@ -11,11 +12,9 @@ describe("B suite", function(){
 	    expect(true).toBe(true);
 	  });
 	  it("and has a positive case", function() {
-		  console.log(a());
 		    expect(a()).toBe(true);
 	  });
-	  it("and has a positive case", function() {
-		  console.log(a());
-		    expect(a()).toBe(true);
+	  it("Test to be false", function() {
+		    expect(c()).toBe(true);
 	  });
 });
