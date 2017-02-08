@@ -1,6 +1,14 @@
 function  a()
 {
-	return true;
+	if(true)
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
+	
 }
 
 

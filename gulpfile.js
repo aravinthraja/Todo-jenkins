@@ -25,5 +25,5 @@ gulp.task('coverage',['unit:coverage'], function() {
  * `$ gulp`
  */
 gulp.task('default', function() {
-  gulp.start('coverage');
+  gulp.start('unit:coverage');
 });

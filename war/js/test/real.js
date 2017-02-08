@@ -15,6 +15,6 @@ describe("B suite", function(){
 		    expect(a()).toBe(true);
 	  });
 	  it("Test to be false", function() {
-		    expect(c()).toBe(false);
+		    expect(c()).toBe(true);
 	  });
 });
